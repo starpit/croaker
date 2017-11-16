@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "if [ ! -d wrk ]; then git clone https://github.com/wg/wrk.git && cd wrk && make -j; fi",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
