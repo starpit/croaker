@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "columnify": "^1.5.4",
     "parse-duration": "^0.1.1",
     "wrk": "^1.1.0"
   }
