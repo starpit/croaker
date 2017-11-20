@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "if [ ! -d wrk ]; then git clone https://github.com/wg/wrk.git && cd wrk && make -j; fi",
+    "postinstall": "if [ ! -d wrk ]; then git clone -b add_min_column https://github.com/starpit/wrk.git && cd wrk && make -j; fi",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,6 +12,6 @@
   "dependencies": {
     "columnify": "^1.5.4",
     "parse-duration": "^0.1.1",
-    "wrk": "^1.1.0"
+    "wrk": "git://github.com/starpit/node-wrk.git#add_min_latency"
   }
 }

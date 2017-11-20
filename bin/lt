@@ -35,14 +35,14 @@ if (!url) {
  * Here we subscribe to incremental updates
  *
  */
-eventBus.on('/lt/iter', ({ N, fratio, pratio, requestsPerSec, latency50, latency75, latency90, latency99, latencyMax }) => {
-    const opts = { showHeaders: N === 1,
+eventBus.on('/croak/iter', ({ N, fratio, pratio, requestsPerSec, latency50, latency75, latency90, latency99, latencyMax }) => {
+    const columnifyOpts = { showHeaders: N === 1,
                    minWidth: 'LATENCYMAX'.length,
                    config: {
                        requestsPerSec: { minWidth: 'requestsPerSec'.length }
                    }
                  },
-          pretty = columnify([{ N, requestsPerSec, latency50, latency75, latency90, latency99, latencyMax }], opts)
+          pretty = columnify([{ N, requestsPerSec, latency50, latency75, latency90, latency99, latencyMax }], columnifyOpts)
 
     console.log(pretty)
 })
@@ -52,3 +52,5 @@ eventBus.on('/lt/iter', ({ N, fratio, pratio, requestsPerSec, latency50, latency
  *
  */
 lt({ url, eventBus })
+    .then(() => process.exit(0))
+    .catch(() => process.exit(1))
