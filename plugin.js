@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-const { croak } = require('./lib/croak'),
+const { lt, end } = require('./lib/croak'),
       { last, show } = require('./lib/replay'),
       { list } = require('./lib/history-table'),
       { clear } = require('./lib/history')
@@ -22,9 +22,10 @@ const { croak } = require('./lib/croak'),
 module.exports = (commandTree, prequire) => {
     const wsk = prequire('/ui/commands/openwhisk-core')
 
-    commandTree.listen('/croak', croak(wsk))    // start a new load run
-    commandTree.listen('/croak/last', last)     // show last run, from history
-    commandTree.listen('/croak/history', list)  // show recent history
-    commandTree.listen('/croak/clear', clear)   // clear history
-    commandTree.listen('/croak/show', show)
+    commandTree.listen('/croak/lt', lt(wsk))         // start a new load run
+    commandTree.listen('/croak/end', end)            // end any ongoing load run
+    commandTree.listen('/croak/last', last)          // show last run, from history
+    commandTree.listen('/croak/history', list(wsk))  // show recent history
+    commandTree.listen('/croak/clear', clear)        // clear history
+    commandTree.listen('/croak/show', show)          // show a given historical run
 }
