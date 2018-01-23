@@ -12,6 +12,7 @@
   "dependencies": {
     "columnify": "^1.5.4",
     "parse-duration": "^0.1.1",
+    "tmp": "0.0.33",
     "wrk": "git://github.com/starpit/node-wrk.git#latency_stacks"
   }
 }
